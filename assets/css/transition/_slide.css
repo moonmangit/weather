@@ -1,0 +1,13 @@
+/* slide-up, Slide from bottom */
+.slide-up-enter-active,
+.slide-up-leave-active {
+  @apply duration-500;
+}
+.slide-up-enter-from,
+.slide-up-leave-to {
+  @apply translate-y-[calc(100%+3rem)] opacity-0;
+}
+.slide-up-enter-to,
+.slide-up-leave-from {
+  @apply translate-y-0;
+}
