@@ -91,7 +91,8 @@ const coverImage = computed(() => {
   const defaultCover = "/images/night-clear.jpg";
   if (!props.content) return defaultCover;
   return (
-    getCoverFromIconFile((props.content as any).weather[0].icon) || defaultCover
+    getCoverFromIconFile((props.content as any).weather[0].icon, "0.5") ||
+    defaultCover
   );
 });
 

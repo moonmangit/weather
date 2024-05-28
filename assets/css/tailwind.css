@@ -1,5 +1,6 @@
 @import "/node_modules/animate.css/animate.min.css";
 @import "./transition/_slide.css";
+@import "./transition/_page.css";
 
 @tailwind base;
 @tailwind components;

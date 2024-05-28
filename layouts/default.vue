@@ -1,6 +1,6 @@
 <template>
   <div>
-    <AppNav />
+    <AppNav :disabled="!navActive.value.value" />
     <main>
       <div class="min-h-[calc(100dvh-3rem)]">
         <slot></slot>
@@ -20,14 +20,31 @@
 </template>
 
 <script lang="ts" setup>
+import Lenis from "lenis";
+
 // Footer
 const footerActive = useTogglable(false);
 
+// Navigator
+const navActive = useTogglable(true);
+
 export type DefaultLayoutProvide = {
   footerActive: ReturnType<typeof useTogglable>;
+  navActive: ReturnType<typeof useTogglable>;
 };
 provide<DefaultLayoutProvide>("layout:default", {
   footerActive,
+  navActive,
+});
+
+// Lenis
+onMounted(() => {
+  const lenis = new Lenis();
+  function raf(time: any) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
 });
 </script>
 

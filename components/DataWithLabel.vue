@@ -1,11 +1,20 @@
 <template>
   <div>
-    <p class="text-xs">{{ content.label }}</p>
-    <section class="flex items-center gap-1">
-      <Icon :name="content.iconName"></Icon>
-      <div>
-        {{ content.value }}
-      </div>
+    <p class="text-xs animate__animated animate__fadeIn">
+      {{ content.label }}
+    </p>
+    <section
+      class="flex items-center gap-1 animate__animated animate__fadeInDown"
+      :style="{
+        animationDelay: '0.3s',
+      }"
+    >
+      <IconValue
+        :content="{
+          value: content.value,
+          iconName: content.iconName,
+        }"
+      />
     </section>
   </div>
 </template>

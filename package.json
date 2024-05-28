@@ -21,6 +21,7 @@
     "animate.css": "^4.1.1",
     "apexcharts": "^3.49.1",
     "dayjs-nuxt": "^2.1.9",
+    "lenis": "^1.0.45",
     "nuxt": "^3.11.2",
     "nuxt-icon": "^0.6.10",
     "vue": "^3.4.27",

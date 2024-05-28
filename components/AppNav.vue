@@ -7,7 +7,12 @@
       'bg-white !text-gray-700 !border-gray-500': activeNav,
     }"
   >
-    <div class="container mx-auto flex justify-between items-stretch">
+    <div
+      class="container mx-auto flex justify-between items-stretch"
+      :class="{
+        'opacity-0 pointer-events-none duration-300': disabled,
+      }"
+    >
       <NuxtLink
         to="/"
         class="pl-2"
@@ -30,7 +35,7 @@
         </li>
       </ul>
       <div
-        class="fixed top-0 right-0 h-[10px] w-0 clip-path-polygon-[50%_100%,_0%_0%,_100%_0%] duration-300"
+        class="fixed top-0 right-0 h-[10px] w-0 clip-path-polygon-[50%_100%,_0%_0%,_100%_0%] duration-700"
         :class="{
           'bg-white': !activeNav,
           'bg-gray-800': activeNav,
@@ -45,6 +50,10 @@
 </template>
 
 <script lang="ts" setup>
+defineProps<{
+  disabled?: boolean;
+}>();
+
 const hideNav = ref(false);
 const activeNav = ref(false);
 onMounted(() => {
@@ -58,9 +67,8 @@ onMounted(() => {
   });
 });
 
-const links: Record<string, { to: string; label: string; iconName: string }> = {
-  about: { to: "/about", label: "About", iconName: "mdi:information" },
-  contact: { to: "/contact", label: "Contact", iconName: "mdi:email" },
+const links: Record<string, { to: string; label: string }> = {
+  about: { to: "/about", label: "About" },
 };
 
 // Moving bar

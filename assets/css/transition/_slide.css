@@ -11,3 +11,14 @@
 .slide-up-leave-from {
   @apply translate-y-0;
 }
+
+/* slide-down, Slide from top */
+.slide-down-enter-active,
+.slide-down-leave-active {
+  @apply duration-500;
+}
+
+.slide-down-enter-from,
+.slide-down-leave-to {
+  @apply translate-y-[calc(-100%+3rem)] opacity-0;
+}
