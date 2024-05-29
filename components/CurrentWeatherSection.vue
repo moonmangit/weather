@@ -64,7 +64,7 @@
           <div class="whitespace-nowrap col-span-2">
             <p class="text-xs">Wind</p>
 
-            <section class="flex items-center gap-x-3">
+            <section class="flex items-center gap-x-3 flex-wrap">
               <IconValue
                 :content="{
                   value: content.wind.speed + ' m/s',
@@ -73,7 +73,7 @@
               />
               <IconValue
                 :content="{
-                  value: content.wind.gust + ' m/s',
+                  value: content.wind.gust ? content.wind.gust + ' m/s' : '-',
                   iconName: 'material-symbols:storm-outline-rounded',
                 }"
               />
@@ -110,13 +110,17 @@
             <section class="flex gap-x-3">
               <IconValue
                 :content="{
-                  value: `${content.main.sea_level} hPa`,
+                  value: content.main.sea_level
+                    ? `${content.main.sea_level} hPa`
+                    : '-',
                   iconName: 'streamline:beach',
                 }"
               ></IconValue>
               <IconValue
                 :content="{
-                  value: `${content.main.grnd_level} hPa`,
+                  value: content.main.grnd_level
+                    ? `${content.main.grnd_level} hPa`
+                    : '-',
                   iconName: 'material-symbols:home-work-outline-rounded',
                 }"
               ></IconValue>
@@ -129,7 +133,10 @@
     </div>
     <!-- Scroll Down Action -->
     <div
-      class="text-white flex flex-col items-center absolute bottom-10 w-full z-10"
+      class="text-white flex flex-col items-center absolute bottom-10 w-full z-10 duration-700"
+      :class="{
+        'translate-y-[50px] !text-gray-700': forecastActive,
+      }"
     >
       <div
         class="flex flex-col items-center justify-center rounded-full gap-2 animate__animated animate__fadeIn"
@@ -137,7 +144,10 @@
         <p class="animate__animated animate__fadeInUp">forecast</p>
         <Icon
           name="material-symbols:arrow-downward"
-          class="animate__animated animate__fadeInDown animate__infinite animate__slow animate__delay-1s"
+          class="animate__animated animate__fadeInDown animate__infinite animate__slow animate__delay-1s duration-300"
+          :class="{
+            'max-h-[0] overflow-hidden': forecastActive,
+          }"
         ></Icon>
       </div>
     </div>
@@ -148,6 +158,15 @@
 defineProps<{
   content: any;
 }>();
+
+const forecastActive = ref(false);
+onMounted(() => {
+  const { y } = useScroll(document, {
+    onScroll() {
+      forecastActive.value = y.value > window.innerHeight * 0.25;
+    },
+  });
+});
 </script>
 
 <style></style>

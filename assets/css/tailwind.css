@@ -1,13 +1,17 @@
 @import "/node_modules/animate.css/animate.min.css";
 @import "./transition/_slide.css";
 @import "./transition/_page.css";
+@import "./_scroll.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+* {
+  @apply app-scrollbar;
+}
+
 body {
   @apply font-light w-screen overflow-y-auto overflow-x-hidden duration-300;
-
   @apply bg-gray-50 text-gray-900 dark:text-gray-100 dark:bg-gray-900;
 }

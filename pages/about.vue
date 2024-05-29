@@ -1,29 +1,26 @@
 <template>
   <div>
     <div class="min-h-[calc(100dvh-3rem)] pt-[68px] flex flex-col">
-      <section class="container mx-auto flex justify-center pb-10">
-        <div class="size-48">
-          <img
-            src="https://picsum.photos/seed/123/1920/1080"
-            class="w-full h-full object-cover rounded-full"
-          />
-        </div>
-      </section>
+      <section
+        class="container mx-auto flex justify-center h-[10dvw]"
+      ></section>
       <section class="bg-white text-gray-700 relative flex-1">
         <div class="container mx-auto p-8 text-center space-y-5">
-          <h1 class="text-xl">About website</h1>
+          <h1 class="text-xl">About Veather</h1>
           <hr class="w-[min(350px,30dvw)] mx-auto border-gray-300" />
           <section class="space-y-5 w-[min(75ch,80dvw)] mx-auto">
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ea
-              ad odit modi nisi doloremque quisquam ex, doloribus, fuga magni
-              culpa vero a molestiae sint eum reprehenderit! Explicabo, quaerat
-              maiores.
+              At Veather, we're all about providing accurate, up-to-date weather
+              info to help you plan your day with ease. This practice project,
+              built with <b>Nuxt.js</b>, <b>Tailwind CSS</b>, <b>Firebase</b>,
+              and the <b>OpenWeather API</b>, offers real-time updates tailored
+              to your location. Get current weather details like temperature,
+              conditions, humidity, wind, visibility, and air quality. Plus,
+              enjoy our 24-hour forecasts featuring hourly temperature
+              predictions, precipitation, wind forecasts, UV index updates, and
+              weather alerts. Stay informed and make the most of every moment
+              with Veather!
             </p>
-            <q class="block">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius ea
-              ad odit modi nisi doloremque quisquam.
-            </q>
           </section>
           <ul class="flex justify-center gap-x-4">
             <li
@@ -52,7 +49,7 @@
     <div class="fixed inset-0 z-[-1] brightness-50">
       <img
         class="w-full h-full object-cover"
-        src="/images/night-rain.jpg"
+        src="/images/day-rain.jpg"
         alt=""
       />
     </div>

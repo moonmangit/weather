@@ -17,9 +17,9 @@
 <script lang="ts" setup>
 const show = ref(false);
 
-const { y, directions } = useScroll(document, {
+const { y } = useScroll(document, {
   onScroll() {
-    show.value = y.value > 200 && directions.bottom;
+    show.value = y.value > 200;
   },
 });
 

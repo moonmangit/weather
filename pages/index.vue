@@ -9,9 +9,8 @@
       <StickyClock />
       <div class="fixed inset-0 z-[-1] saturate-50 brightness-50">
         <img
-          :src="coverImage"
-          alt=""
           class="w-full h-full object-cover"
+          :src="coverImage"
           :style="{
             ...coverStyle,
           }"
@@ -24,6 +23,7 @@
 </template>
 
 <script lang="ts" setup>
+import { breakpointsTailwind } from "@vueuse/core";
 import { weatherApi } from "~/assets/src/api";
 import { getCoverFromIconFile } from "~/assets/src/cover";
 import type { DefaultLayoutProvide } from "~/layouts/default.vue";
@@ -44,6 +44,8 @@ const { data, pending } = useAsyncData<any>(async () => {
   };
 });
 
+const { greaterOrEqual } = useBreakpoints(breakpointsTailwind);
+
 // Cover
 const coverStyle = ref({
   transform: "translateY(0px)",
@@ -52,13 +54,22 @@ const coverStyle = ref({
 onMounted(() => {
   const { y } = useScroll(document, {
     onScroll() {
+      if (!greaterOrEqual("lg").value) return;
       coverStyle.value = {
-        transform: `translateY(${y.value * 0.1}px) scale(${1 + y.value * 0.001}) rotate(${y.value * 0.005}deg) `,
-        filter: `blur(${y.value * 0.01}px) brightness(${1 - y.value * 0.001})`,
+        transform: `
+          translateY(${y.value * 0.1}px) 
+          scale(${1 + y.value * 0.001}) 
+          rotate(${y.value * 0.005}deg)
+        `,
+        filter: `
+          blur(${y.value * 0.01}px) 
+          brightness(${1 - y.value * 0.001})
+        `,
       };
     },
   });
 });
+
 const coverImage = computed(() => {
   const defaultCover = "/images/day-clear.jpg";
   if (!data.value) return defaultCover;

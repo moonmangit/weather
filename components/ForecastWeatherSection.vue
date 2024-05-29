@@ -22,8 +22,13 @@
     </div>
 
     <div
-      class="absolute bottom-[calc(100%-1px)] h-[50px] lg:h-[150px] bg-white inset-x-0 clip-path-polygon-[0_100%,_0_0,_50%_97%,_100%_0,_100%_100%] lg:clip-path-polygon-[0_100%,_0_0,_50%_90%,_100%_0,_100%_100%] duration-300"
+      class="absolute bottom-[calc(100%-1px)] h-[50px] lg:h-[150px] bg-white inset-x-0 clip-path-polygon-[0_100%,_0_0,_50%_97%,_100%_0,_100%_100%] duration-1000"
+      :class="{
+        '!clip-path-polygon-[0_100%,_0%_97%,_50%_0%,_100%_100%,_100%_100%] h-[80px] lg:h-[90px]':
+          active,
+      }"
     />
+    <!-- lg:clip-path-polygon-[0_100%,_0_0,_50%_90%,_100%_0,_100%_100%] -->
   </section>
 </template>
 
@@ -36,7 +41,7 @@ const active = ref(false);
 onMounted(() => {
   const { y } = useScroll(document, {
     onScroll() {
-      active.value = y.value > window.innerHeight * 0.5;
+      active.value = y.value > window.innerHeight * 0.25;
     },
   });
 });

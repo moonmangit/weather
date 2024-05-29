@@ -11,7 +11,7 @@
       {{ timeString }}
     </p>
     <hr
-      class="flex-1 w-[100px] border-white duration-300"
+      class="flex-1 w-[100px] duration-300"
       :class="{
         'border-gray-800': inverted,
         'border-white': !inverted,
